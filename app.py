@@ -10,8 +10,14 @@ incorrect_answer = ""
 def index():
     # Homepage with instructions
     if request.method == "POST":
+        # If user fills in a username, returns riddle template
         username = request.form["username"]
-        return redirect("/riddle/" + username)
+        """ If user does not enter a username but hits submit, returns to index
+         rather than displaying an error page """
+        if username == "":
+            return render_template("index.html")
+        else:
+            return redirect("/riddle/" + username)
     return render_template("index.html")
    
 @app.route('/riddle/<username>', methods=["GET", "POST"])
