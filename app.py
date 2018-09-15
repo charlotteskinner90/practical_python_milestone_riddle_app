@@ -3,6 +3,8 @@ import json
 from flask import Flask, render_template, request, redirect
 
 app = Flask(__name__)
+correct_answer = ""
+incorrect_answer = ""
 
 @app.route('/', methods=["GET", "POST"])
 def index():
@@ -14,12 +16,28 @@ def index():
    
 @app.route('/riddle/<username>', methods=["GET", "POST"])
 def riddle(username):
-        # Page to display riddles
+    # Page to display riddles
     data = []
     # Load in json file containing riddles
     with open("data/riddles.json", "r") as json_data:
         data = json.load(json_data)
-    return render_template("riddle.html", riddle_data=data)
+    
+    riddle_index = 0
+    global correct_answer
+    global incorrect_answer
+    
+    if request.method == "POST":
+        
+        user_response = request.form["answer"]
+        if data[riddle_index]["answer"] == user_response:
+            riddle_index += 1
+            correct_answer = user_response + " is correct!"
+            print ("Correct!")
+        elif data[riddle_index]["answer"] != user_response:
+            incorrect_answer = user_response + " is incorrect!"
+            print ("Incorrect!")
+            
+    return render_template("riddle.html", riddle_data=data, riddle_index=riddle_index, correct_answer=correct_answer, incorrect_answer=incorrect_answer)
 
 @app.route('/leaderboard')
 def leaderboard():
