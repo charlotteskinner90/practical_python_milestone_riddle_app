@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+  {% block content %}
+    {% for question in riddle_data %}
+        <div class="homepageText">
+            <h3>{{ question.question }}</h3>
+        </div>
+        <form method="POST">
+            <input type="text" id="answer" name="answer">
+            <input type="hidden" name="riddle_index" id="riddle_index" value={{riddle_index}}>
+            <button>Submit</button>
+        </form>
+        <div class="answerText">
+        </div>
+      {% endfor %}
+  {% endblock %}

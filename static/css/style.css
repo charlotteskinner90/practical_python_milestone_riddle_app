@@ -1,0 +1,34 @@
+html, body {
+     width: 100%;
+     height: 100%;
+     margin: 0px;
+     font-family: 'avenir', sans-serif;
+     color: #ffffff;
+     background-color: #db5461;
+}
+
+.pageTitle{
+ padding: 50px;
+ font-size: 80px;
+}
+.homepageText{
+ padding: 20px;
+ align-items: center;
+ width: 40%;
+}
+.answerText{
+ padding: 23px;
+}
+button {
+    border-radius: 5px;
+    padding: 10px 50px;
+    background-color: #54dbce;
+    border-color: #54dbce;
+    font-size: 20px;
+    font-weight: bold;
+}
+input{
+ width: 30%;
+ margin: 15px 10px 0px 50px;
+ padding: 10px 10px 10px 20px;
+}
