@@ -1,11 +1,19 @@
 {% extends "base.html" %}
 	{% block content %}
 		<div class="homepageText">
-				<h3>ANSWERS</h3>
+			<h1>ANSWERS</h1>
 		</div>
-        {% for answer in answers %}
-            {{answer}}
+		<div class="answersText">
+        {% for answer in riddle_data %}
+            <h3>Question {{ loop.index }}</h3>
+            <h4>You answered {{ user_response }}</h4>
+            <h4>Correct answer is: {{ answer.answer }}</h4>
+            <br>
         {% endfor %}
-		<div class="answerText">
-		</div>
+        </div>
+        <h1>See where you sit on the leaderboard!</h1>
+        <a href="{{ url_for('leaderboard') }}">
+        	<button>Leaderboard</button>
+		</a>
+		
   {% endblock %}

@@ -9,7 +9,6 @@ riddle_data = []
 riddle_index = 0
 is_last_question = False
 
-
 with open("data/riddles.json", "r") as json_data:
 		riddle_data = json.load(json_data)
 
@@ -35,12 +34,7 @@ def riddle(username):
 	
 	if is_last_question:
 	    hasEnded = True
-            
-    	pprint(riddle_index)
-    	pprint(hasEnded)
-    	pprint(is_last_question)        
-    
-    
+           
 	if riddle_index == len(riddle_data)-2:
 		is_last_question = True
 	
@@ -62,9 +56,9 @@ def riddle(username):
     	    return render_template("riddle.html", riddle_data=riddle_data, riddle_index=riddle_index, is_last_question=is_last_question)
 
 
-@app.route('/riddle/<username>/answers', methods=["GET"])
+@app.route('/riddle/<username>/answers', methods=["GET", "POST"])
 def answers(username):
-	return render_template("answers.html", answers=answersArray)
+	return render_template("answers.html", answers=answersArray, riddle_data=riddle_data, riddle_index=riddle_index)
 
 
 @app.route('/leaderboard')
