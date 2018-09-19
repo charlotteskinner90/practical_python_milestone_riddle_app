@@ -47,7 +47,7 @@ def riddle(username):
 	if request.method == "POST":
 			
 		user_response = request.form["answer"]
-		if riddle_data[riddle_index + 1]["answer"] == user_response:
+		if riddle_data[riddle_index]["answer"] == user_response:
 			answersArray.append({1, user_response})
 			print ("Correct!")
 			riddle_index += 1
@@ -62,8 +62,8 @@ def riddle(username):
     	    return render_template("riddle.html", riddle_data=riddle_data, riddle_index=riddle_index, is_last_question=is_last_question)
 
 
-@app.route('/riddle/<username>/answers', methods=["GET", "POST"])
-def answers(username, answersArray):
+@app.route('/riddle/<username>/answers', methods=["GET"])
+def answers(username):
 	return render_template("answers.html", answers=answersArray)
 
 
