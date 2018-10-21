@@ -5,7 +5,8 @@ html, body {
 	padding: 0;
 	font-family: 'avenir', sans-serif;
 	color: #ffffff;
-	background-color: #db5461;
+	background-image: url("../images/galaxy.jpg");
+	background-size: auto;
 }
 
 .navbar-nav {
