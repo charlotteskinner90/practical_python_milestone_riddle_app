@@ -1,71 +1,85 @@
 import os
 import json
 from flask import Flask, render_template, request, redirect
-from pprint import pprint
 
 app = Flask(__name__)
 answersArray = []
 riddle_data = []
 riddle_index = 0
+score = 0
 is_last_question = False
 
+# Load riddle data
 with open("data/riddles.json", "r") as json_data:
-		riddle_data = json.load(json_data)
+	riddle_data = json.load(json_data)
+
+# ROUTING 
 
 @app.route('/', methods=["GET", "POST"])
 def index():
-		# Homepage with instructions
-		if request.method == "POST":
-				# If user fills in a username, returns riddle template
-				username = request.form["username"]
-				""" If user does not enter a username but hits submit, returns to index
-				 rather than displaying an error page """
-				if username == "":
-						return render_template("index.html")
-				else:
-						return redirect("/riddle/" + username)
-		return render_template("index.html")
-	 
+	answersArray = []
+	riddle_data = []
+	riddle_index = 0
+	score = 0
+	is_last_question = False
+	
+	# Homepage with instructions
+	if request.method == "POST":
+		"""
+		If user fills in a username, returns riddle template else returns to the
+		index page rather than displaying an error
+		"""
+		username = request.form["username"]
+		if username == "":
+			return render_template("index.html")
+		else:
+			return redirect("/riddle/" + username)
+
+	return render_template("index.html")
+
+# Riddle page routing
 @app.route('/riddle/<username>', methods=["GET", "POST"])
 def riddle(username):
+
 	global riddle_index
 	global is_last_question
+	global score
 	hasEnded = False
-	
+
 	if is_last_question:
-	    hasEnded = True
-           
+		hasEnded = True
 	if riddle_index == len(riddle_data)-2:
 		is_last_question = True
-	
-	if request.method == "POST":
-			
+	if request.form:
 		user_response = request.form["answer"]
+		# Checks to see if user's answer is correct compared with answer in riddles.json
 		if riddle_data[riddle_index]["answer"] == user_response:
-			answersArray.append({1, user_response})
+			answersArray.append({"status": 1, "userAnswer": user_response, "realAnswer": riddle_data[riddle_index]["answer"]})
+			# Adds +1 to the score if correct
+			score += 1
 			print ("Correct!")
 			riddle_index += 1
 		elif riddle_data[riddle_index]["answer"] != user_response:
-			answersArray.append({0, user_response})
+			answersArray.append({"status": 0, "userAnswer": user_response, "realAnswer": riddle_data[riddle_index]["answer"]})
 			print ("Incorrect!")
 			riddle_index += 1
-					
-    	if hasEnded:
-        	return redirect("/riddle/" + username + "/answers")
-        else:
-    	    return render_template("riddle.html", riddle_data=riddle_data, riddle_index=riddle_index, is_last_question=is_last_question)
+	# Routing for answers page if quiz has ended
+	if hasEnded:
+		return redirect("/riddle/" + username + "/answers")
+	else:
+		return render_template("riddle.html", riddle_data=riddle_data, riddle_index=riddle_index, is_last_question=is_last_question, username=username, score=score)
 
-
+# Routing for answers page
 @app.route('/riddle/<username>/answers', methods=["GET", "POST"])
 def answers(username):
-	return render_template("answers.html", answers=answersArray, riddle_data=riddle_data, riddle_index=riddle_index)
+	return render_template("answers.html", answers=answersArray, riddle_data=riddle_data, riddle_index=riddle_index, score=score)
 
-
+# Routing for leaderboard
 @app.route('/leaderboard')
 def leaderboard():
-		return render_template("leaderboard.html")
-				
+	return render_template("leaderboard.html", leaderboard=leaderboard)
+
 if __name__ == '__main__':
-		app.run(host=os.environ.get('IP'),
-						port=int(os.environ.get('PORT')),
-						debug=True)
+	app.run(host=os.environ.get('IP'),
+	port=int(os.environ.get('PORT')),
+	debug=True)

@@ -1,20 +1,23 @@
 {% extends "base.html" %}
 
 {% block content %}
-	<div>
-		<h1>ANSWERS</h1>
+	<div class="restrained">
+		<h1>Answers</h1>
+		<h2>Your score was {{score}} out of {{riddle_index}}</h2>
+		<h3>See where you sit on our leaderboard</h3>
+		<a class="button" href="{{ url_for('leaderboard') }}">Leaderboard</a>
 	</div>
 	<div class="answersText">
-			{% for answer in riddle_data %}
-					<h3>Question {{ loop.index }}</h3>
-					<h4>You answered {{ user_response }}</h4>
-					<h4>Correct answer is: {{ answer.answer }}</h4>
-					<br>
-			{% endfor %}
-			</div>
-			<h1>See where you sit on the leaderboard!</h1>
-			<a href="{{ url_for('leaderboard') }}">
-				<button>Leaderboard</button>
-	</a>
+		{% for answer in answers %}
+		<div class="answer">
+			<h2>Question {{ loop.index }}</h2>
+			<b>You answered {{ answer.userAnswer }}</b><br />
+			<b>Correct answer is: {{ answer.realAnswer }}</b>
+			<br />
+			This was {% if answer.status %}<span style="color: green">Correct!</span>{% else %}<span style="color: red">Wrong!</span>{% endif %}
+		</div>
+		{% endfor %}
+	</div>
+			
 	
 {% endblock %}

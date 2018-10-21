@@ -63,6 +63,10 @@ form {
 	width: 400px;
 }
 
+.restrained {
+	width: 400px;
+}
+
 input {
 	padding: 10px 20px;
 	font-size: 20px;
@@ -81,8 +85,21 @@ input {
 	margin: 10px 0;
 	border: 0;
 	font-size: 25px;
+	text-decoration: none;
 }
 
 .button:hover {
 	background-color: #4bc4b7;
+}
+
+.answer {
+	background: #fff;
+	color: #2c2c2c;
+	padding: 10px 15px;
+	border-radius: 4px;
+	margin: 10px 0;
+}
+
+.answer h2 {
+	margin: 0;
 }
