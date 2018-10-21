@@ -2,9 +2,12 @@
 
 {% block content %}
     <h1>Leaderboard</h1>
-    <ul>
-    {% for user in username %}
-        <li>{{ username }}</li>
-    {% endfor %}
-    </ul>
+	<ol class="leaderboard-list answer">
+	{% for item in leaderboard %}
+		<li {% if loop.index < 4 %}style="font-size: 20px; font-weight:bold;margin-left: 25px;"{% endif %}>{{ item.username }}: {{item.score}}</li>
+		{% if loop.index == 3 %}
+			<hr />
+		{% endif %}
+	{% endfor %}
+	</ol>
 {% endblock %}

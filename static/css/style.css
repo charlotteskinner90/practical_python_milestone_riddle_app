@@ -103,3 +103,8 @@ input {
 .answer h2 {
 	margin: 0;
 }
+
+.leaderboard-list li {
+	font-size: 15px;
+	margin-left: 19px;
+}

@@ -1,6 +1,7 @@
 import os
 import json
 from flask import Flask, render_template, request, redirect
+from operator import itemgetter
 
 app = Flask(__name__)
 answersArray = []
@@ -12,16 +13,24 @@ is_last_question = False
 # Load riddle data
 with open("data/riddles.json", "r") as json_data:
 	riddle_data = json.load(json_data)
+	
+# Add usernames and results to file
+score_list = []
+
+def results_table(username, result):
+    score_list.append({
+        'username': username,
+        'score': result,
+    })
+    
+    with open('data/results.json', 'w') as outfile:
+        json.dump(score_list, outfile)
 
 # ROUTING 
 
 @app.route('/', methods=["GET", "POST"])
 def index():
-	answersArray = []
-	riddle_data = []
-	riddle_index = 0
-	score = 0
-	is_last_question = False
+	reset_data()
 	
 	# Homepage with instructions
 	if request.method == "POST":
@@ -65,6 +74,7 @@ def riddle(username):
 			riddle_index += 1
 	# Routing for answers page if quiz has ended
 	if hasEnded:
+		results_table(username, score) 
 		return redirect("/riddle/" + username + "/answers")
 	else:
 		return render_template("riddle.html", riddle_data=riddle_data, riddle_index=riddle_index, is_last_question=is_last_question, username=username, score=score)
@@ -73,11 +83,27 @@ def riddle(username):
 @app.route('/riddle/<username>/answers', methods=["GET", "POST"])
 def answers(username):
 	return render_template("answers.html", answers=answersArray, riddle_data=riddle_data, riddle_index=riddle_index, score=score)
-
+	
 # Routing for leaderboard
 @app.route('/leaderboard')
 def leaderboard():
-	return render_template("leaderboard.html", leaderboard=leaderboard)
+	reset_data()
+	with open("data/results.json", "r") as leaderboard_data: 
+		data = json.load(leaderboard_data)
+
+	scores = sorted(data, key=itemgetter('score'), reverse=True)
+	return render_template("leaderboard.html", leaderboard=scores)
+
+def reset_data():
+	global riddle_index
+	global is_last_question
+	global score
+	answersArray = []
+	riddle_data = []
+	leaderboard_scores = []
+	riddle_index = 0
+	score = 0
+	is_last_question = False
 
 if __name__ == '__main__':
 	app.run(host=os.environ.get('IP'),
