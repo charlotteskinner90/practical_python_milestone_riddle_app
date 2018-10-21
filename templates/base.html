@@ -2,29 +2,27 @@
 <html>
     <head>
         <title>Riddle App</title>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
         <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" type="text/css" />
     </head>
     <body>
-        <div>
-            <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
-              <ul class="navbar-nav">
-                <li class="nav-item active">
-                  <a class="nav-link" href="{{ url_for('index') }}">Riddle App</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="{{ url_for('index') }}">Home</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="{{ url_for('leaderboard') }}">Leaderboard</a>
-                </li>
-              </ul>
-            </nav>
-        </div>
-        <div>
-          {% block content %}{% endblock %}
-        </div>
+      <nav class="navbar-nav">
+        <ul class="wrapper">
+          <li class="nav-item active">
+            <a class="nav-link" href="{{ url_for('index') }}">Riddle App</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('index') }}">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('leaderboard') }}">Leaderboard</a>
+          </li>
+          {% if username %}
+          <li class="username">Player: {{username}}</li>
+        {% endif %}
+        </ul>
+      </nav>
+      <div class="wrapper">
+        {% block content %}{% endblock %}
+      </div>
     </body>
 </html>

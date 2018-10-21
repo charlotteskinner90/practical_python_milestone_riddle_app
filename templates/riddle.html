@@ -1,13 +1,12 @@
 {% extends "base.html" %}
-	{% block content %}
-		<div class="homepageText">
-				<h3>{{riddle_data[riddle_index].question}}</h3>
-		</div>
-		<form method="POST">
-				<input type="text" id="answer" name="answer">
-				<input type="hidden" name="riddle_index" id="riddle_index" value={{riddle_index}}>
-				<button>{% if not is_last_question %}Next Question{% else %}Submit answers{% endif %}</button>
-		</form>
-		<div class="answerText">
-		</div>
-  {% endblock %}
+
+{% block content %}
+	<h2>{{riddle_data[riddle_index].question}}</h2>
+	<form method="POST">
+			<input type="text" id="answer" name="answer" autofocus placeholder="Answer here..." autocomplete="off">
+			<input type="hidden" name="riddle_index" id="riddle_index" value={{riddle_index}}>
+			<button class="button">{% if not is_last_question %}Next Question{% else %}Submit answers{% endif %}</button>
+	</form>
+	<div class="answerText">
+	</div>
+{% endblock %}
