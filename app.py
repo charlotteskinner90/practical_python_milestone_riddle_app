@@ -62,13 +62,13 @@ def riddle(username):
 	if request.form:
 		user_response = request.form["answer"]
 		# Checks to see if user's answer is correct compared with answer in riddles.json
-		if riddle_data[riddle_index]["answer"] == user_response:
+		if user_response.lower() in riddle_data[riddle_index]["answer".lower()]:
 			answersArray.append({"status": 1, "userAnswer": user_response, "realAnswer": riddle_data[riddle_index]["answer"]})
 			# Adds +1 to the score if correct
 			score += 1
 			print ("Correct!")
 			riddle_index += 1
-		elif riddle_data[riddle_index]["answer"] != user_response:
+		elif user_response.lower() not in riddle_data[riddle_index]["answer".lower()]:
 			answersArray.append({"status": 0, "userAnswer": user_response, "realAnswer": riddle_data[riddle_index]["answer"]})
 			print ("Incorrect!")
 			riddle_index += 1
