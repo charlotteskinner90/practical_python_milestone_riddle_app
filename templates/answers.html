@@ -12,7 +12,12 @@
 		<div class="answer">
 			<h2>Question {{ loop.index }}</h2>
 			<b>You answered {{ answer.userAnswer }}</b><br />
-			<b>Correct answer is: {{ answer.realAnswer }}</b>
+			<b>Correct answer is: 
+				{% if answer.realAnswer|length > 1 %}
+					{{ answer.realAnswer[0] }} or {{ answer.realAnswer[1] }}
+				{% else %}
+					{{ answer.realAnswer[0] }}
+				{% endif %}</b>
 			<br />
 			This was {% if answer.status %}<span style="color: green">Correct!</span>{% else %}<span style="color: red">Wrong!</span>{% endif %}
 		</div>
