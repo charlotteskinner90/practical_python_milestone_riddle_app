@@ -98,9 +98,9 @@ def reset_data():
 	global riddle_index
 	global is_last_question
 	global score
+	global answersArray
 	answersArray = []
 	riddle_data = []
-	leaderboard_scores = []
 	riddle_index = 0
 	score = 0
 	is_last_question = False
