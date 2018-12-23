@@ -1,13 +1,15 @@
 {% extends "base.html" %}
 
 {% block content %}
-	<h1>Science Riddle App</h1>
-	<div>
-		<h2>A Python-Powered Riddle Game</h2>
+	<div class="mainTitle">
+		<header>SCIENCE RIDDLE APP</header>
+	</div>
+	<div class="mainText">
+		<h2>A Python-Powered <br> Riddle Game</h2>
 		<h3>Enter your username below and hit Start to begin!</h3>
 	</div>
-	<form method="POST">
+	<form method="POST" class="formInput">
 		<input autofocus autocomplete="username" type="text" id="username" name="username" placeholder="Enter username..">
-		<button type="submit" class="button">Start</a>
+		<button type="submit" class="button"><i class="fas fa-brain"></i>	START   <i class="fas fa-flask"></i></a>
 	</form>
 {% endblock %}

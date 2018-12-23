@@ -5,15 +5,13 @@ html, body {
 	padding: 0;
 	font-family: 'avenir', sans-serif;
 	color: #ffffff;
-	background-image: url("../images/galaxy.jpg");
-	background-size: auto;
+	background-color: #01030B;
 }
 
 .navbar-nav {
 	margin: 0;
 	list-style: none;
-	background: #2c2c2c;
-	display: inline-block;
+	background-image: url("../images/galaxy.jpg");	display: inline-block;
 	padding: 0;
 	width: 100%;
 }
@@ -77,7 +75,7 @@ input {
 .button {
 	border-radius: 4px;
 	padding: 10px 15px;
-	background-color: #54dbce;
+	background-color: #c344ad;
 	cursor: pointer;
 	color: #2c2c2c;
 	text-align: center;
@@ -108,4 +106,28 @@ input {
 .leaderboard-list li {
 	font-size: 15px;
 	margin-left: 19px;
+}
+.mainTitle{
+	text-align: center;
+    background-color: #1EDA4F;
+    border-radius: 5px;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 50px;
+    font-weight: bold;
+    padding: 18px;
+}
+.mainText{
+	text-align: center;
+    padding: 5px;
+    margin-left: auto;
+    margin-right: auto;
+    font-size:30px;
+}
+.formInput{
+	text-align: center;
+    width: 60%;
+    padding: 5px;
+    margin-left: auto;
+    margin-right: auto;
 }

@@ -1,7 +1,9 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <h1>Leaderboard</h1>
+<div class="mainTitle">
+    <header>Leaderboard</header>
+</div>
 	<ol class="leaderboard-list answer">
 	{% for item in leaderboard %}
 		<li {% if loop.index < 4 %}style="font-size: 20px; font-weight:bold;margin-left: 25px;"{% endif %}>{{ item.username }}: {{item.score}}</li>
