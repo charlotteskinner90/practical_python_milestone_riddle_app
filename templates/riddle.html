@@ -1,9 +1,11 @@
 {% extends "base.html" %}
 
 {% block content %}
-	<div class="mainText">
-		<h2>{{riddle_data[riddle_index].question}}</h2>
-	</div>
+	<header>
+		<div class="mainText">
+			<h2>{{riddle_data[riddle_index].question}}</h2>
+		</div>
+	</header>
 	<form method="POST" class="formInput">
 			<input type="text" id="answer" name="answer" autofocus placeholder="Answer here..." autocomplete="off">
 			<input type="hidden" name="riddle_index" id="riddle_index" value={{riddle_index}}>

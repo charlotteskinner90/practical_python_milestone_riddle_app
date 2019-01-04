@@ -1,14 +1,14 @@
 {% extends "base.html" %}
 
 {% block content %}
-	<div>
+	<header>
 		<div class="mainTitle">
-			<header>Answers</header>
+			<h1>Answers</h1>
 		</div>
-		<h2>Your score was {{score}} out of {{riddle_index}}</h2>
-		<h3>See where you sit on our leaderboard! <i class="fas fa-hand-point-down"></i></h3>
-		<a class="buttonLeaderboard" href="{{ url_for('leaderboard') }}">Leaderboard</a>
-	</div>
+	</header>
+	<h2>Your score was {{score}} out of {{riddle_index}}</h2>
+	<h3>See where you sit on our leaderboard! <i class="fas fa-hand-point-down"></i></h3>
+	<a class="buttonLeaderboard" href="{{ url_for('leaderboard') }}">Leaderboard</a>
 	<div class="answersText">
 		{% for answer in answers %}
 		<div class="answer">
@@ -25,6 +25,4 @@
 		</div>
 		{% endfor %}
 	</div>
-			
-	
 {% endblock %}
