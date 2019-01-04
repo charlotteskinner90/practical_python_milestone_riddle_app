@@ -126,12 +126,12 @@ input {
 }
 /*Text and Titles styling*/
 .mainTitle h1 {
-  font-size: 60px;
+  	font-size: 40px;
   	text-align: center;
     background-color: #1EDA4F;
     border-radius: 5px;
     font-weight: bold;
-    padding: 18px;
+    padding: 15px;
     margin: 0 auto 0 auto;
 }
 .formInput{
