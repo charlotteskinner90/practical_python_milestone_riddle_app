@@ -13,18 +13,20 @@ This website is aimed at anyone who has an interest in science, school age and u
   - I am a school age student, using this quiz app as a fun way to revise. User flow is the same as above.
   
 ### Wireframes created using [Mockflow](https://www.mockflow.com/):
-  - This was the initial design idea I had thought of for this app. As I was developing the app, I thought that it would be nice to add an intermediate page displaying the users answers for each question, so they can see how they performed. The user can then click to see where they placed on the leaderboard.
+  - This was the initial design idea I had thought of for this app. As I was developing the app, I thought that it would be nice to add an intermediate page displaying the users answers for each question, so they can see how they performed. The user can then click to see where they placed on the leaderboard. Once I had finished coding the functionality of the app, I went back over the UI of the app to make it look better visually. I found looking through other quiz apps on [Dribbble](https://dribbble.com/search?q=quiz) really useful to gather ideas for a better design.
+  
 ![Wireframe / Site Diagram](static/images/wireframes/Homepage.png "Homepage")
 ![Wireframe / Site Diagram](static/images/wireframes/Riddles_Page.png "Riddles Page")
 ![Wireframe / Site Diagram](static/images/wireframes/Leaderboard.png "Leaderboard")
+
 ## Features
  
 ### Existing Features
  - The [Homepage](https://github.com/charlotteskinner90/practical_python_milestone_riddle_app/blob/master/templates/index.html) is the first port of call for the user. The user should enter their username and hit the Start button to begin the game. If the username box is empty, the game will redirect back to the homepage to force the user to enter a username.
- - Once the user hits the start button, they are redirected to the [Riddles](https://github.com/charlotteskinner90/practical_python_milestone_riddle_app/blob/master/templates/riddle.html) page. Their username is displayed in the top right-hand corner.
- - The user should enter their answer in the input box and press the 'Next Question' button. Note: There is one question where the user could enter either a word or a number, this is accounted for in the section of the python that checks the users response.
+ - Once the user hits the start button, they are redirected to the [Riddles](https://github.com/charlotteskinner90/practical_python_milestone_riddle_app/blob/master/templates/riddle.html) page. Their username is displayed at the top of the page.
+ - The user should enter their answer in the input box and press the 'Next Question' button. Note: There is one question where the user could enter either a word or a number, this is accounted for in the [section of the python](https://github.com/charlotteskinner90/practical_python_milestone_riddle_app/blob/master/app.py#L68) that checks the users response.
  - On the last question, the button changes to 'Submit answers' and the user is redirected to the [Answers](https://github.com/charlotteskinner90/practical_python_milestone_riddle_app/blob/master/templates/answers.html) page. This page displayed the user's response, whether the response was correct, and the correct answer. The user's score is stored in a JSON array against their username.
- - At this point, the user can then press either the button or the navigation item to go to the [Leaderboard](https://github.com/charlotteskinner90/practical_python_milestone_riddle_app/blob/master/templates/leaderboard.html) page to see where they have placed against their peers. This page calls the JSON array storing the user scores and displays them in reverse numerical order.
+ - At this point, the user can then press either the button or the navigation item to go to the [Leaderboard](https://github.com/charlotteskinner90/practical_python_milestone_riddle_app/blob/master/templates/leaderboard.html) page to see where they have placed against their peers. This page calls the JSON array storing the user scores and displays them in reverse numerical order. The top 3 users scores are displayed at the top in bold.
 
 ### Features Left to Implement
 - Letting users log in to save their progress, then allow them to improve their score
@@ -40,11 +42,13 @@ In this section, you should mention all of the languages, frameworks, libraries,
     - This app uses the **Jinja2** for the front-end templating of the routes outlined in the app.py file. 
     - Modelled on Django's templating style, **Jinja2** is scalable and modular to allow for reusable components
 
-- **HTML** 
+- [HTML5](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/HTML5)
     - HTML used for the structure of the page templates
 
-- **CSS**
-    - Language used to apply styles to each page
+- [CSS3](https://developer.mozilla.org/en-US/docs/Web/CSS)
+    - Language used to apply styles to each page for styling of the components (e.g. colour schemes, fonts, images)
+    
+- [Font Awesome](https://fontawesome.com/) is used for the icons on the page
 
 ## Testing
 
@@ -64,13 +68,13 @@ I carried out manual testing for the user stories as follows:
 
 ## Bugs
 
-- An interesting bug I came across was that the answers array kept appending to itself between users. So for example, user A would complete the quiz and their 10 answers would display on the answers page. When user B came along and completed their 10 answers, 20 answers would show on the answers page. To rectify this, I added a function called reset_data() which sets the answersArray to an empty array between users.
-- A second bug I came across was that the results.json file kept overwriting itself, which meant the leaderboard only ever had one or two people in it. To fix this, I made it so that when we open the results.json file it loads the data that is currently in the leaderboard. The new user's score is then appended to this data and not overwriting the file.
+- An interesting bug I came across was that the answers array kept appending to itself between users. So for example, user A would complete the quiz and their 10 answers would display on the answers page. When user B came along and completed their 10 answers, 20 answers would show on the answers page. To rectify this, I added a function called [reset_data()](https://github.com/charlotteskinner90/practical_python_milestone_riddle_app/blob/master/app.py#L103-L111) which sets the answersArray to an empty array between users.
+- A second bug I came across was that the results.json file kept overwriting itself, which meant the leaderboard only ever had one or two people in it. To [fix](https://github.com/charlotteskinner90/practical_python_milestone_riddle_app/blob/master/app.py#L18-L20) this, I made it so that when we open the results.json file it loads the data that is currently in the leaderboard. The new user's score is then appended to this data and not overwriting the file.
 
 ## Deployment
 
-This application is hosted on Heroku with a custom domain: http://pythonriddle.cskinner.me/ In order to deploy this app to heroku, I added a Procfile which tells heroku the language of the app and the name of the file that needs to be run - in this case this was app.py
-I then set up a requirements.txt file which holds the dependencies that this app requires in order to run. Both the Procfile an requirements.txt file are committed to the repository and pushed to Heroku.
+This application is hosted on Heroku with a custom domain: http://pythonriddle.cskinner.me/ In order to deploy this app to heroku, I added a [Procfile](https://github.com/charlotteskinner90/practical_python_milestone_riddle_app/blob/master/Procfile) which tells heroku the language of the app and the name of the file that needs to be run - in this case this was [app.py](https://github.com/charlotteskinner90/practical_python_milestone_riddle_app/blob/master/app.py)
+I then set up a [requirements.txt](https://github.com/charlotteskinner90/practical_python_milestone_riddle_app/blob/master/requirements.txt) file which holds the dependencies that this app requires in order to run. Both the Procfile an requirements.txt file are committed to the repository and pushed to Heroku.
 I had to set up some environment variables inside Heroku in order for the app to appear on the live URL. The following are configured under Settings -> Reveal Config Vars
   - IP: 0.0.0.0
   - PORT: 5000
@@ -86,7 +90,7 @@ To run this app locally, please use the following steps:
 - The riddles used in this game were copied from this [Science Riddles](https://www.getriddles.com/science-riddles/) site
 
 ### Media
-- The image used on the background of this app is from this Wallpapers Collections [site](http://cuteweblinks.info/preview/Blue-Space-Backgrounds/Blue-Space-Backgrounds-25.html)
+- The image used on the background of the navigation bar is from this Wallpapers Collections [site](http://cuteweblinks.info/preview/Blue-Space-Backgrounds/Blue-Space-Backgrounds-25.html)
 
 ### Acknowledgements
 
