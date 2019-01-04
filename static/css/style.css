@@ -8,22 +8,19 @@ html, body {
 	background-color: #01030B;
 }
 
+/* Navbar styling */
 .navbar-nav {
 	margin: 0;
 	list-style: none;
-	background-image: url("../images/galaxy.jpg");	display: inline-block;
+	background-image: url("../images/galaxy.jpg");
 	padding: 0;
 	width: 100%;
+	display: flex;
 }
-
-ul.wrapper {
-	padding-left: 0;
-}
-
 .navbar-nav .nav-item {
-	float: left;
 	background: none;
-	display: grid;
+	display: inline-flex;
+	flex-wrap: wrap;
 }
 
 .navbar-nav .nav-item a {
@@ -32,6 +29,7 @@ ul.wrapper {
 	padding: 10px 20px;
 	margin: 10px 15px;
 	border-radius: 4px;
+	font-size: 22px;
 }
 
 .navbar-nav .nav-item a:first-child {
@@ -43,26 +41,26 @@ ul.wrapper {
 	color: #1b1b1b;
 	background: #ffffff;
 }
-
 .navbar-nav .username {
-	float: right;
 	list-style: none;
-	font-size: 20px;
+	font-size: 26px;
 	font-weight: bold;
 	margin-top: 15px;
+	text-align: center;
+	text-transform: uppercase;
 }
-
+ul.wrapper {
+	padding-left: 0;
+}
 .wrapper {
 	margin: 0 auto;
 	width: 92%;
 	max-width: 900px;
 }
 
-form {
-	width: 400px;
-}
 
-.restrained {
+/*User input styling*/
+form {
 	width: 400px;
 }
 
@@ -85,9 +83,28 @@ input {
 	border: 0;
 	font-size: 25px;
 	text-decoration: none;
+	text-transform: uppercase;
+	font-weight: bold;
 }
 
-.button:hover {
+.buttonLeaderboard {
+	border-radius: 4px;
+	padding: 10px 15px;
+	background-color: #c344ad;
+	cursor: pointer;
+	color: #2c2c2c;
+	text-align: center;
+	width: 50%;
+	display: block;
+	margin: 10px 0;
+	border: 0;
+	font-size: 25px;
+	text-decoration: none;
+	text-transform: uppercase;
+	font-weight: bold;
+}
+
+.button:hover .buttonLeaderboard:hover{
 	background-color: #4bc4b7;
 }
 
@@ -102,32 +119,52 @@ input {
 .answer h2 {
 	margin: 0;
 }
-
+/*Leaderboard styling*/
 .leaderboard-list li {
-	font-size: 15px;
+	font-size: 20px;
 	margin-left: 19px;
 }
-.mainTitle{
-	text-align: center;
+/*Text and Titles styling*/
+.mainTitle {
+  font-size: 60px;
+  	text-align: center;
     background-color: #1EDA4F;
     border-radius: 5px;
     margin-left: auto;
     margin-right: auto;
-    font-size: 50px;
     font-weight: bold;
     padding: 18px;
 }
+.formInput{
+	text-align: center;
+    width: 80%;
+    padding: 5px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+@media screen and (min-width: 400px) {
+  .mainTitle {
+    font-size: 40px;
+  }
+  .formInput {
+    width: 70%;
+  }
+}
+
+@media screen and (min-width: 800px) {
+  .mainTitle {
+    font-size: 60px;
+  }
+  .formInput {
+    width: 60%;
+  }
+}
+
 .mainText{
 	text-align: center;
     padding: 5px;
     margin-left: auto;
     margin-right: auto;
     font-size:30px;
-}
-.formInput{
-	text-align: center;
-    width: 60%;
-    padding: 5px;
-    margin-left: auto;
-    margin-right: auto;
 }
