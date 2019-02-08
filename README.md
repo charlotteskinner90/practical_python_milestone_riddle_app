@@ -73,7 +73,7 @@ I carried out manual testing for the user stories as follows:
 
 ## Deployment
 
-This application is hosted on Heroku with a custom domain: http://pythonriddle.cskinner.me/ In order to deploy this app to heroku, I added a [Procfile](https://github.com/charlotteskinner90/practical_python_milestone_riddle_app/blob/master/Procfile) which tells heroku the language of the app and the name of the file that needs to be run - in this case this was [app.py](https://github.com/charlotteskinner90/practical_python_milestone_riddle_app/blob/master/app.py)
+This application is hosted on Heroku at: https://python-riddle-app-cs.herokuapp.com/ In order to deploy this app to heroku, I added a [Procfile](https://github.com/charlotteskinner90/practical_python_milestone_riddle_app/blob/master/Procfile) which tells heroku the language of the app and the name of the file that needs to be run - in this case this was [app.py](https://github.com/charlotteskinner90/practical_python_milestone_riddle_app/blob/master/app.py)
 I then set up a [requirements.txt](https://github.com/charlotteskinner90/practical_python_milestone_riddle_app/blob/master/requirements.txt) file which holds the dependencies that this app requires in order to run. Both the Procfile an requirements.txt file are committed to the repository and pushed to Heroku.
 I had to set up some environment variables inside Heroku in order for the app to appear on the live URL. The following are configured under Settings -> Reveal Config Vars
   - IP: 0.0.0.0
