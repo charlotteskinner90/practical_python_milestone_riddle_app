@@ -1,4 +1,4 @@
-# [Practical Python Science Riddle Application](http://pythonriddle.cskinner.me/)
+# [Practical Python Science Riddle Application](https://python-riddle-app-cs.herokuapp.com/)
 
 I have greated this quiz style riddles game using Python based frameworks for the Practical Python module of the Code Institute Full Stack Web Development diploma.
 I have chosen the theme of scientific riddles as my background is in science, and I found that doing quiz based questions helped with revision during my exams at school.
@@ -58,13 +58,13 @@ This works the same for the second test, but for the leaderboard page.
 
 I carried out manual testing for the user stories as follows:
 
-- **User lands on the [homepage](http://pythonriddle.cskinner.me/)** - _Homepage is up and showing 200 status in developer tools_
+- **User lands on the [homepage](https://python-riddle-app-cs.herokuapp.com/)** - _Homepage is up and showing 200 status in developer tools_
 - **If user does not enter username but tries to enter game, stays on homepage** - _User stays on homepage if no username entered_
 - **User enters username and clicks to start game** - _User is redirected to the riddles page with the URL of /riddle/{username}_
 - **User types in answer to question and clicks to go to next question, next question is shown** - _Answer is entered, button is clicked and next question is shown_
 - **Answer that could be a word or numerical value, can both be correct** - _If user enters the word or the number version of the answer, both answers are stored in the array so either can be correct and are marked as such_
 - **User gets to last question and hits 'Submit Answers', answers are submitted** - _Once the user hits 'Submit Answers', their answers are stored in an answersArray. The user is redirected to the answers page with URL /riddle/{username}/answers and their answers along with the correct answers and their score are shown.
-- **User clicks to see the Leaderboard** - _User is redirected to the [Leaderboard](http://pythonriddle.cskinner.me/leaderboard) page. Users score and username is stored in a JSON array. The username and score is called in this page, and the scores are displayed in descending order._
+- **User clicks to see the Leaderboard** - _User is redirected to the [Leaderboard](https://python-riddle-app-cs.herokuapp.com/leaderboard) page. Users score and username is stored in a JSON array. The username and score is called in this page, and the scores are displayed in descending order._
 
 ## Bugs
 
@@ -73,7 +73,7 @@ I carried out manual testing for the user stories as follows:
 
 ## Deployment
 
-This application is hosted on Heroku with a custom domain: http://pythonriddle.cskinner.me/ In order to deploy this app to heroku, I added a [Procfile](https://github.com/charlotteskinner90/practical_python_milestone_riddle_app/blob/master/Procfile) which tells heroku the language of the app and the name of the file that needs to be run - in this case this was [app.py](https://github.com/charlotteskinner90/practical_python_milestone_riddle_app/blob/master/app.py)
+This application is hosted on Heroku at: https://python-riddle-app-cs.herokuapp.com/ In order to deploy this app to heroku, I added a [Procfile](https://github.com/charlotteskinner90/practical_python_milestone_riddle_app/blob/master/Procfile) which tells heroku the language of the app and the name of the file that needs to be run - in this case this was [app.py](https://github.com/charlotteskinner90/practical_python_milestone_riddle_app/blob/master/app.py)
 I then set up a [requirements.txt](https://github.com/charlotteskinner90/practical_python_milestone_riddle_app/blob/master/requirements.txt) file which holds the dependencies that this app requires in order to run. Both the Procfile an requirements.txt file are committed to the repository and pushed to Heroku.
 I had to set up some environment variables inside Heroku in order for the app to appear on the live URL. The following are configured under Settings -> Reveal Config Vars
   - IP: 0.0.0.0
@@ -94,4 +94,4 @@ To run this app locally, please use the following steps:
 
 ### Acknowledgements
 
-- I would like to thank my colleague Rhys Bowles for his encouragement, bug reporting and being a second pair of eyes to look over my code during this project.
+- I would like to thank my colleague Rhys Bowles for bug reporting and code reviewing during this project.
