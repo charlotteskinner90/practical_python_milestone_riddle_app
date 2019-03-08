@@ -1,9 +1,11 @@
 import os
 import json
-from flask import Flask, render_template, request, redirect
+from flask import Flask, render_template, request, redirect, session, url_for
 from operator import itemgetter
 
 app = Flask(__name__)
+app.secret_key = os.getenv("SECRET", "some_secret")
+
 answersArray = []
 riddle_data = []
 riddle_index = 0
@@ -25,7 +27,7 @@ def results_table(username, result):
     global score_list
 
     score_list.append({
-        'username': username,
+        'username': session['username'],
         'score': result,
     })
 
@@ -43,11 +45,11 @@ def index():
         If user fills in a username, returns riddle template else returns
         to the index page rather than displaying an error
         """
-        username = request.form["username"]
-        if username == "":
+        session['username'] = request.form["username"]
+        if session['username'] == "":
             return render_template("index.html")
         else:
-            return redirect("/riddle/" + username)
+            return redirect("/riddle/" + session['username'])
 
     return render_template("index.html")
 
@@ -58,6 +60,9 @@ def riddle(username):
     global is_last_question
     global score
     hasEnded = False
+    
+    if "username" not in session:
+        return redirect(url_for("index"))
 
     if is_last_question:
         hasEnded = True
@@ -96,14 +101,14 @@ def riddle(username):
     # Routing for answers page if quiz has ended
     if hasEnded:
         results_table(username, score)
-        return redirect("/riddle/" + username + "/answers")
+        return redirect("/riddle/" + session['username'] + "/answers")
     else:
         return render_template(
             "riddle.html",
             riddle_data=riddle_data,
             riddle_index=riddle_index,
             is_last_question=is_last_question,
-            username=username,
+            username=session['username'],
             score=score
         )
 
@@ -129,10 +134,6 @@ def leaderboard():
 
 # Resets data so that previous users answers are not displayed on answer page
 def reset_data():
-    global answersArray
-    global riddle_index
-    global score
-    global is_last_question
     answersArray = []
     riddle_index = 0
     score = 0
