@@ -4,7 +4,7 @@ from flask import Flask, render_template, request, redirect, session, url_for
 from operator import itemgetter
 
 app = Flask(__name__)
-app.secret_key = os.getenv("SECRET", "some_secret")
+app.secret_key = os.urandom(24)
 
 answersArray = []
 riddle_data = []
@@ -38,6 +38,7 @@ def results_table(username, result):
 @app.route('/', methods=["GET", "POST"])
 def index():
     reset_data()
+    session.pop('username', None)
 
     # Homepage with instructions
     if request.method == "POST":
@@ -69,16 +70,16 @@ def riddle(username):
     if riddle_index == len(riddle_data) - 2:
         is_last_question = True
     if request.form:
-        user_response = request.form["answer"]
+        session['user_response'] = request.form["answer"]
         """
         Checks to see if user's answer is correct compared with answer
         in riddles.json
         """
-        if user_response.lower() in riddle_data[riddle_index]["answer".lower()]:
+        if session['user_response'].lower() in riddle_data[riddle_index]["answer".lower()]:
             answersArray.append(
                 {
                     "status": 1,
-                    "userAnswer": user_response,
+                    "userAnswer": session['user_response'],
                     "realAnswer": riddle_data[riddle_index]["answer"]
                 }
             )
@@ -87,11 +88,11 @@ def riddle(username):
             print("Correct!")
             riddle_index += 1
 
-        elif user_response.lower() not in riddle_data[riddle_index]["answer".lower()]:
+        elif session['user_response'].lower() not in riddle_data[riddle_index]["answer".lower()]:
             answersArray.append(
                 {
                     "status": 0,
-                    "userAnswer": user_response,
+                    "userAnswer": session['user_response'],
                     "realAnswer": riddle_data[riddle_index]["answer"]
                 }
             )
@@ -126,19 +127,20 @@ def answers(username):
 # Routing for leaderboard
 @app.route('/leaderboard')
 def leaderboard():
+    session.pop('username', None)
     score_list
     reset_data()
     scores = sorted(score_list, key=itemgetter('score'), reverse=True)
+    
     return render_template("leaderboard.html", leaderboard=scores)
 
 
 # Resets data so that previous users answers are not displayed on answer page
 def reset_data():
-    answersArray = []
-    riddle_index = 0
-    score = 0
+    session.pop('answersArray', None)
+    session.pop('riddle_index', None)
+    session.pop('score', None),
     is_last_question = False
-
 
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),
