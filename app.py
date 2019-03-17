@@ -6,11 +6,7 @@ from operator import itemgetter
 app = Flask(__name__)
 app.secret_key = os.urandom(24)
 
-answersArray = []
 riddle_data = []
-riddle_index = 0
-score = 0
-is_last_question = False
 score_list = []
 
 # Load riddle data
@@ -47,6 +43,10 @@ def index():
         to the index page rather than displaying an error
         """
         session['username'] = request.form["username"]
+        session['answersArray'] = []
+        session['riddle_index'] = 0
+        session['is_last_question'] = False
+        session['score'] = 0
         if session['username'] == "":
             return render_template("index.html")
         else:
@@ -57,60 +57,57 @@ def index():
 # Riddle Page Routing
 @app.route('/riddle/<username>', methods=["GET", "POST"])
 def riddle(username):
-    global riddle_index
-    global is_last_question
-    global score
     hasEnded = False
     
     if "username" not in session:
         return redirect(url_for("index"))
 
-    if is_last_question:
+    if session['is_last_question']:
         hasEnded = True
-    if riddle_index == len(riddle_data) - 2:
-        is_last_question = True
+    if session['riddle_index'] == len(riddle_data) - 2:
+        session['is_last_question'] = True
     if request.form:
         session['user_response'] = request.form["answer"]
         """
         Checks to see if user's answer is correct compared with answer
         in riddles.json
         """
-        if session['user_response'].lower() in riddle_data[riddle_index]["answer".lower()]:
-            answersArray.append(
+        if session['user_response'].lower() in riddle_data[session['riddle_index']]["answer".lower()]:
+            session['answersArray'].append(
                 {
                     "status": 1,
                     "userAnswer": session['user_response'],
-                    "realAnswer": riddle_data[riddle_index]["answer"]
+                    "realAnswer": riddle_data[session['riddle_index']]["answer"]
                 }
             )
             # Adds +1 to the score if correct
-            score += 1
+            session['score'] += 1
             print("Correct!")
-            riddle_index += 1
+            session['riddle_index'] += 1
 
-        elif session['user_response'].lower() not in riddle_data[riddle_index]["answer".lower()]:
-            answersArray.append(
+        elif session['user_response'].lower() not in riddle_data[session['riddle_index']]["answer".lower()]:
+            session['answersArray'].append(
                 {
                     "status": 0,
                     "userAnswer": session['user_response'],
-                    "realAnswer": riddle_data[riddle_index]["answer"]
+                    "realAnswer": riddle_data[session['riddle_index']]["answer"]
                 }
             )
             print("Incorrect!")
-            riddle_index += 1
+            session['riddle_index'] += 1
 
     # Routing for answers page if quiz has ended
     if hasEnded:
-        results_table(username, score)
+        results_table(session['username'], session['score'])
         return redirect("/riddle/" + session['username'] + "/answers")
     else:
         return render_template(
             "riddle.html",
             riddle_data=riddle_data,
-            riddle_index=riddle_index,
-            is_last_question=is_last_question,
+            riddle_index=session['riddle_index'],
+            is_last_question=session['is_last_question'],
             username=session['username'],
-            score=score
+            score=session['score']
         )
 
 # Routing for answers page
@@ -118,10 +115,10 @@ def riddle(username):
 def answers(username):
     return render_template(
         "answers.html",
-        answers=answersArray,
+        answers=session['answersArray'],
         riddle_data=riddle_data,
-        riddle_index=riddle_index,
-        score=score
+        riddle_index=session['riddle_index'],
+        score=session['score']
     )
 
 # Routing for leaderboard
