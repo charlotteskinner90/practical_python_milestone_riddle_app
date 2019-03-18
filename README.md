@@ -1,19 +1,18 @@
 # [Practical Python Science Riddle Application](https://python-riddle-app-cs.herokuapp.com/)
 
-I have greated this quiz style riddles game using Python based frameworks for the Practical Python module of the Code Institute Full Stack Web Development diploma.
-I have chosen the theme of scientific riddles as my background is in science, and I found that doing quiz based questions helped with revision during my exams at school.
-This is similar to this approach but on a smaller scale.
+I have greated this riddles game using Python-based frameworks for the Practical Python module of the Code Institute Full Stack Web Development diploma.
+I have chosen the theme of scientific riddles as my academic background is in science, and I found that using quiz-based revision tools helped during my exams at school.
  
 ## UX
 
-This website is aimed at anyone who has an interest in science, school age and upwards. People can use this for fun, to test their knowledge of various science facts. School age users could use this as a revision tool, as this app can be customised by adding new questions/answers to the json file.
+This website is aimed at anyone who has an interest in science, school age and upwards. People can use this for fun, to test their knowledge of various science facts. School teachers could use this as a revision tool for all ages, as this app can be customised by adding new questions/answers to the json file.
 
 ## User Stories
-  - I am a general user with an interest in science. The user would want to complete the quiz to test their knowledge of general science facts. The questions are quite varied, the user must answer each one and then their answers are displayed on the answers page. The user can see where they have placed on the leaderboard by clicking on the leaderboard button.
+  - I am a general user with an interest in science or up for a challenge! The user would want to complete the quiz to test their knowledge of general science facts. The questions are quite varied, the user must answer each one and then their answers are displayed on the answers page. The user can see where they have placed on the leaderboard by clicking on the leaderboard button.
   - I am a school age student, using this quiz app as a fun way to revise. User flow is the same as above.
   
 ### Wireframes created using [Mockflow](https://www.mockflow.com/):
-  - This was the initial design idea I had thought of for this app. As I was developing the app, I thought that it would be nice to add an intermediate page displaying the users answers for each question, so they can see how they performed. The user can then click to see where they placed on the leaderboard. Once I had finished coding the functionality of the app, I went back over the UI of the app to make it look better visually. I found looking through other quiz apps on [Dribbble](https://dribbble.com/search?q=quiz) really useful to gather ideas for a better design.
+  - This was the initial design idea I had thought of for this app. As I was developing the app, I thought that it would be nice to add an intermediate page displaying the users answers for each question, so they can see how they performed. The user can then click to see where they placed on the leaderboard. Once I had finished coding the functionality of the app, I went back over the UI of the app to make it look better visually with added pops of colour in call-to-action areas. I found looking through other quiz apps on [Dribbble](https://dribbble.com/search?q=quiz) really useful to gather ideas for a better design.
   
 ![Wireframe / Site Diagram](static/images/wireframes/Homepage.png "Homepage")
 ![Wireframe / Site Diagram](static/images/wireframes/Riddles_Page.png "Riddles Page")
@@ -24,7 +23,7 @@ This website is aimed at anyone who has an interest in science, school age and u
 ### Existing Features
  - The [Homepage](https://github.com/charlotteskinner90/practical_python_milestone_riddle_app/blob/master/templates/index.html) is the first port of call for the user. The user should enter their username and hit the Start button to begin the game. If the username box is empty, the game will redirect back to the homepage to force the user to enter a username.
  - Once the user hits the start button, they are redirected to the [Riddles](https://github.com/charlotteskinner90/practical_python_milestone_riddle_app/blob/master/templates/riddle.html) page. Their username is displayed at the top of the page.
- - The user should enter their answer in the input box and press the 'Next Question' button. Note: There is one question where the user could enter either a word or a number, this is accounted for in the [section of the python](https://github.com/charlotteskinner90/practical_python_milestone_riddle_app/blob/master/app.py#L68) that checks the users response.
+ - The user should enter their answer in the input box and press the 'Next Question' button. Note: There is a question where the user could enter either a word or a number, this is accounted for in the [section of the python](https://github.com/charlotteskinner90/practical_python_milestone_riddle_app/blob/master/app.py#L81-L106) that checks the users response. There is also a question whereby the answer could be spelled in different ways, with a space or hyphen separator for example (from testing by my tutor) - I added these alternatives to the [riddles.json](https://github.com/charlotteskinner90/practical_python_milestone_riddle_app/blob/master/data/riddles.json) file so that the user does not lose marks for this.
  - On the last question, the button changes to 'Submit answers' and the user is redirected to the [Answers](https://github.com/charlotteskinner90/practical_python_milestone_riddle_app/blob/master/templates/answers.html) page. This page displayed the user's response, whether the response was correct, and the correct answer. The user's score is stored in a JSON array against their username.
  - At this point, the user can then press either the button or the navigation item to go to the [Leaderboard](https://github.com/charlotteskinner90/practical_python_milestone_riddle_app/blob/master/templates/leaderboard.html) page to see where they have placed against their peers. This page calls the JSON array storing the user scores and displays them in reverse numerical order. The top 3 users scores are displayed at the top in bold.
 
@@ -32,8 +31,6 @@ This website is aimed at anyone who has an interest in science, school age and u
 - Letting users log in to save their progress, then allow them to improve their score
 
 ## Technologies Used
-
-In this section, you should mention all of the languages, frameworks, libraries, and any other tools that you have used to construct this project. For each, provide its name, a link to its official site and a short sentence of why it was used.
 
 - [Flask](http://flask.pocoo.org/)
     - The project uses **Flask** , a Python micro framework to provide a functional and lightweight core for the application
@@ -48,7 +45,7 @@ In this section, you should mention all of the languages, frameworks, libraries,
 - [CSS3](https://developer.mozilla.org/en-US/docs/Web/CSS)
     - Language used to apply styles to each page for styling of the components (e.g. colour schemes, fonts, images)
     
-- [Font Awesome](https://fontawesome.com/) is used for the icons on the page
+- [Font Awesome](https://fontawesome.com/) is used for the icons in the navigation items, buttons and other call-to-action areas
 
 ## Testing
 
@@ -68,8 +65,9 @@ I carried out manual testing for the user stories as follows:
 
 ## Bugs
 
-- An interesting bug I came across was that the answers array kept appending to itself between users. So for example, user A would complete the quiz and their 10 answers would display on the answers page. When user B came along and completed their 10 answers, 20 answers would show on the answers page. To rectify this, I added a function called [reset_data()](https://github.com/charlotteskinner90/practical_python_milestone_riddle_app/blob/master/app.py#L103-L111) which sets the answersArray to an empty array between users.
+- An interesting bug I came across was that the answers array kept appending to itself between users. So for example, user A would complete the quiz and their 10 answers would display on the answers page. When user B came along and completed their 10 answers, 20 answers would show on the answers page. To rectify this, I added a function called [reset_data()](https://github.com/charlotteskinner90/practical_python_milestone_riddle_app/blob/master/app.py#L148-L151) which releases the session variables and resets everything back to the initial variables.
 - A second bug I came across was that the results.json file kept overwriting itself, which meant the leaderboard only ever had one or two people in it. To [fix](https://github.com/charlotteskinner90/practical_python_milestone_riddle_app/blob/master/app.py#L18-L20) this, I made it so that when we open the results.json file it loads the data that is currently in the leaderboard. The new user's score is then appended to this data and not overwriting the file.
+- The final bug my tutor pointed out was that if more than one user is completing the quiz at the same time, one of the users will get 'list index out of range' error. This was because some of the variables (i.e. riddle_index) were being stored as global variables. I resolved this by implementing [sessions](https://github.com/charlotteskinner90/practical_python_milestone_riddle_app/blob/master/app.py#L44-L48) in the app, so that a session object per user is used to keep track of these variables.
 
 ## Deployment
 
@@ -94,4 +92,4 @@ To run this app locally, please use the following steps:
 
 ### Acknowledgements
 
-- I would like to thank my colleague Rhys Bowles for bug reporting and code reviewing during this project.
+- I would like to thank my tutor Anthony Ngene and colleague Rhys Bowles for bug reporting and code reviewing during this project.
