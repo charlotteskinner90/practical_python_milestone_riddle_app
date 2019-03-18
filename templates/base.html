@@ -1,26 +1,26 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Riddles of the Universe</title>
-        <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" type="text/css" />
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
-    </head>
-    <body>
-      <nav class="navbar-nav">
-        <ul class="wrapper">
-          <li class="nav-item">
-            <a class="nav-link" href="{{ url_for('index') }}"><i class="fas fa-home"></i>    HOME</a>
-          </li>
-          <li class="nav-item" style="float:right">
-            <a class="nav-link" href="{{ url_for('leaderboard') }}"><i class="fas fa-trophy"></i>    LEADERBOARD</a>
-          </li>
-          {% if username %}
-          <li class="username">Player: {{username}}</li>
-        {% endif %}
-        </ul>
-      </nav>
-      <div class="wrapper">
-        {% block content %}{% endblock %}
-      </div>
-    </body>
+  <head>
+    <title>Riddles of the Universe</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" type="text/css" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" />
+  </head>
+  <body>
+    <nav class="navbar-nav">
+      <ul class="wrapper">
+        <li class="nav-item">
+          <a class="nav-link" href="{{ url_for('index') }}"><i class="fas fa-home"></i>    HOME</a>
+        </li>
+        <li class="nav-item" style="float: right">
+          <a class="nav-link" href="{{ url_for('leaderboard') }}"><i class="fas fa-trophy"></i>    LEADERBOARD</a>
+        </li>
+        {% if username %}
+        <li class="username">Player: {{username}}</li>
+      {% endif %}
+      </ul>
+    </nav>
+    <div class="wrapper">
+      {% block content %}{% endblock %}
+    </div>
+  </body>
 </html>

@@ -15,8 +15,10 @@
 			<h2>Question {{ loop.index }}</h2>
 			<b>You answered {{ answer.userAnswer }}</b><br />
 			<b>Correct answer is: 
-				{% if answer.realAnswer|length > 1 %}
-					{{ answer.realAnswer[0] }} or {{ answer.realAnswer[1] }}
+				{% if answer.realAnswer|length > 1 and answer.realAnswer|length <= 2 %}
+					{{ answer.realAnswer[0] }} / {{ answer.realAnswer[1] }}
+				{% elif answer.realAnswer|length == 3 %}
+					{{ answer.realAnswer[0] }} / {{ answer.realAnswer[1] }} / {{ answer.realAnswer[2] }}
 				{% else %}
 					{{ answer.realAnswer[0] }}
 				{% endif %}</b>

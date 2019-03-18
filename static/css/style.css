@@ -1,169 +1,154 @@
 html, body {
-	width: 100%;
-	height: 100%;
-	margin: 0px;
-	padding: 0;
-	font-family: 'avenir', sans-serif;
-	color: #ffffff;
-	background-color: #01030B;
+     width: 100%;
+     height: 100%;
+     margin: 0;
+     padding: 0;
+     font-family: 'avenir', sans-serif;
+     color: #ffffff;
+     background-color: #01030B;
 }
-
 /* Navbar styling */
-.navbar-nav {
-	margin: 0;
-	list-style: none;
-	background-image: url("../images/galaxy.jpg");
-	padding: 0;
-	width: 100%;
-	display: flex;
+ .navbar-nav {
+     margin: 0;
+     list-style: none;
+     background-image: url("../images/galaxy.jpg");
+     padding: 0;
+     width: 100%;
+     display: flex;
 }
-.navbar-nav .nav-item {
-	background: none;
-	display: inline-flex;
-	flex-wrap: wrap;
+ .navbar-nav .nav-item {
+     background: none;
+     display: inline-flex;
+     flex-wrap: wrap;
 }
-
-.navbar-nav .nav-item a {
-	color: #fff;
-	text-decoration: none;
-	padding: 10px 20px;
-	margin: 10px 15px;
-	border-radius: 4px;
-	font-size: 22px;
+ .navbar-nav .nav-item a {
+     color: #fff;
+     text-decoration: none;
+     padding: 10px 20px;
+     margin: 10px 15px;
+     border-radius: 4px;
+     font-size: 22px;
 }
-
-.navbar-nav .nav-item a:first-child {
-	margin-left: 0;
+ .navbar-nav .nav-item a:first-child {
+     margin-left: 0;
 }
-
-.navbar-nav .nav-item.active a,
-.navbar-nav .nav-item a:hover {
-	color: #1b1b1b;
-	background: #ffffff;
+ .navbar-nav .nav-item.active a, .navbar-nav .nav-item a:hover {
+     color: #1b1b1b;
+     background: #ffffff;
 }
-.navbar-nav .username {
-	list-style: none;
-	font-size: 26px;
-	font-weight: bold;
-	margin-top: 15px;
-	text-align: center;
-	text-transform: uppercase;
+ .navbar-nav .username {
+     list-style: none;
+     font-size: 26px;
+     font-weight: bold;
+     margin-top: 15px;
+     text-align: center;
+     text-transform: uppercase;
 }
-ul.wrapper {
-	padding-left: 0;
+ ul.wrapper {
+     padding-left: 0;
 }
-.wrapper {
-	margin: 0 auto;
-	width: 92%;
-	max-width: 900px;
+ .wrapper {
+     margin: 0 auto;
+     width: 92%;
+     max-width: 900px;
 }
-
-
 /*User input styling*/
-form {
-	width: 400px;
+ form {
+     width: 400px;
 }
-
-input {
-	padding: 10px 20px;
-	font-size: 20px;
-	width: calc(100% - 45px);
+ input {
+     padding: 10px 20px;
+     font-size: 20px;
+     width: calc(100% - 45px);
 }
-
-.button {
-	border-radius: 4px;
-	padding: 10px 15px;
-	background-color: #c344ad;
-	cursor: pointer;
-	color: #2c2c2c;
-	text-align: center;
-	width: 100%;
-	display: block;
-	margin: 10px 0;
-	border: 0;
-	font-size: 25px;
-	text-decoration: none;
-	text-transform: uppercase;
-	font-weight: bold;
+ .button {
+     border-radius: 4px;
+     padding: 10px 15px;
+     background-color: #c344ad;
+     cursor: pointer;
+     color: #2c2c2c;
+     text-align: center;
+     width: 100%;
+     display: block;
+     margin: 10px 0;
+     border: 0;
+     font-size: 25px;
+     text-decoration: none;
+     text-transform: uppercase;
+     font-weight: bold;
 }
-
-.buttonLeaderboard {
-	border-radius: 4px;
-	padding: 10px 15px;
-	background-color: #c344ad;
-	cursor: pointer;
-	color: #2c2c2c;
-	text-align: center;
-	width: 50%;
-	display: block;
-	margin: 10px 0;
-	border: 0;
-	font-size: 25px;
-	text-decoration: none;
-	text-transform: uppercase;
-	font-weight: bold;
+ .buttonLeaderboard {
+     border-radius: 4px;
+     padding: 10px 15px;
+     background-color: #c344ad;
+     cursor: pointer;
+     color: #2c2c2c;
+     text-align: center;
+     width: 50%;
+     display: block;
+     margin: 10px 0;
+     border: 0;
+     font-size: 25px;
+     text-decoration: none;
+     text-transform: uppercase;
+     font-weight: bold;
 }
-
-.button:hover .buttonLeaderboard:hover{
-	background-color: #4bc4b7;
+ .button:hover .buttonLeaderboard:hover{
+     background-color: #4bc4b7;
 }
-
-.answer {
-	background: #fff;
-	color: #2c2c2c;
-	padding: 10px 15px;
-	border-radius: 4px;
-	margin: 10px 0;
+ .answer {
+     background: #fff;
+     color: #2c2c2c;
+     padding: 10px 15px;
+     border-radius: 4px;
+     margin: 10px 0;
 }
-
-.answer h2 {
-	margin: 0;
+ .answer h2 {
+     margin: 0;
 }
 /*Leaderboard styling*/
-.leaderboard-list li {
-	font-size: 20px;
-	margin-left: 19px;
+ .leaderboard-list li {
+     font-size: 20px;
+     margin-left: 32px;
 }
 /*Text and Titles styling*/
-.mainTitle h1 {
-  	font-size: 40px;
-  	text-align: center;
-    background-color: #1EDA4F;
-    border-radius: 5px;
-    font-weight: bold;
-    padding: 15px;
-    margin: 0 auto 0 auto;
+ .mainTitle h1 {
+     font-size: 40px;
+     text-align: center;
+     background-color: #1EDA4F;
+     border-radius: 5px;
+     font-weight: bold;
+     padding: 15px;
+     margin: 0 auto 0 auto;
 }
-.formInput{
-	text-align: center;
-    width: 80%;
-    padding: 5px;
-    margin-left: auto;
-    margin-right: auto;
+ .formInput{
+     text-align: center;
+     width: 80%;
+     padding: 5px;
+     margin-left: auto;
+     margin-right: auto;
 }
-
-@media screen and (min-width: 400px) {
-  .mainTitle h1 {
-    font-size: 40px;
-  }
-  .formInput {
-    width: 70%;
-  }
+ @media screen and (min-width: 400px) {
+     .mainTitle h1 {
+         font-size: 40px;
+    }
+     .formInput {
+         width: 70%;
+    }
 }
-
-@media screen and (min-width: 800px) {
-  .mainTitle h1 {
-    font-size: 60px;
-  }
-  .formInput {
-    width: 60%;
-  }
+ @media screen and (min-width: 800px) {
+     .mainTitle h1 {
+         font-size: 60px;
+    }
+     .formInput {
+         width: 60%;
+    }
 }
-
-.mainText{
-	text-align: center;
-    padding: 5px;
-    margin-left: auto;
-    margin-right: auto;
-    font-size:30px;
+ .mainText{
+     text-align: center;
+     padding: 5px;
+     margin-left: auto;
+     margin-right: auto;
+     font-size:30px;
 }
+ 

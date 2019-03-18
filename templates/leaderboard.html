@@ -3,12 +3,12 @@
 {% block content %}
 	<header>
 		<div class="mainTitle">
-		    <h1><i class="fas fa-trophy"></i>   Leaderboard   <i class="fas fa-trophy"></i></h1>
+			<h1><i class="fas fa-trophy"></i>   Leaderboard   <i class="fas fa-trophy"></i></h1>
 		</div>
 	</header>
 	<ol class="leaderboard-list answer">
 	{% for item in leaderboard %}
-		<li {% if loop.index < 4 %}style="font-size: 25px; font-weight:bold;margin-left: 25px;"{% endif %}>{{ item.username }}: {{item.score}}</li>
+		<li {% if loop.index < 4 %}style="font-size: 25px; font-weight: bold; margin-left: 36px;"{% endif %}>{{ item.username }}: {{item.score}}</li>
 		{% if loop.index == 3 %}
 			<hr />
 		{% endif %}

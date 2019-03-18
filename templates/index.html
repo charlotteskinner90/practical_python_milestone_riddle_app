@@ -1,19 +1,19 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div class="container">
-	<header>
-		<div class="mainTitle">
-			<h1>RIDDLES OF THE UNIVERSE</h1>
+	<div class="container">
+		<header>
+			<div class="mainTitle">
+				<h1>RIDDLES OF THE UNIVERSE</h1>
+			</div>
+		</header>
+		<div class="mainText">
+			<h2>A Python-Powered <br>Riddle Game</h2>
+			<h3>Enter your username below and hit Start to begin!</h3>
 		</div>
-	</header>
-	<div class="mainText">
-		<h2>A Python-Powered <br> Riddle Game</h2>
-		<h3>Enter your username below and hit Start to begin!</h3>
+		<form method="POST" class="formInput">
+			<input autofocus autocomplete="username" type="text" id="username" name="username" placeholder="Enter username..">
+			<button type="submit" class="button"><i class="fas fa-brain"></i>  START  <i class="fas fa-flask"></i></a>
+		</form>
 	</div>
-	<form method="POST" class="formInput">
-		<input autofocus autocomplete="username" type="text" id="username" name="username" placeholder="Enter username..">
-		<button type="submit" class="button"><i class="fas fa-brain"></i>	START   <i class="fas fa-flask"></i></a>
-	</form>
-</div>
 {% endblock %}

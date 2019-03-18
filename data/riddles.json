@@ -50,7 +50,7 @@
     {
         "index": 9,
         "question":"I am a hypothetical tunnel, a short cut if you will, of space-time which connects far away regions. I am a what?",
-        "answer":["wormhole", "worm-hole"]
+        "answer":["wormhole", "worm-hole", "worm hole"]
     },
     
     {
@@ -58,5 +58,4 @@
         "question":"What periodic element do pyromaniacs love the most?",
         "answer":["arsenic"]
     }
-    
 ]
